@@ -1,0 +1,354 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Linux下github+hexo搭建自己的博客 | CKJOKER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="CKJOKER">
+    
+    <meta name="description" content="hexo简介
+hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github和Heroku上。作者是来自台湾的少年。
+搭建hexo博客
+由于本人是linux系统，所以以下操作都是在linux环境下的，Windows，Mac原理一样，操作略有区别。（Windows下推荐Zip">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="CKJOKER" title="CKJOKER"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="CKJOKER">CKJOKER</a></h1>
+				<h2 class="blog-motto">感受今天的阳光，明日还会霞光满天</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="Search" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/27/Linux下github-hexo搭建自己的博客/" title="Linux下github+hexo搭建自己的博客" itemprop="url">Linux下github+hexo搭建自己的博客</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="CKJOKER">CKJOKER</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-01-27T12:37:34.000Z" itemprop="datePublished">Jan 27 2015</time>
+    Updated:<time datetime="2015-01-27T15:06:02.000Z" itemprop="dateModified">Jan 27 2015</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo简介"><span class="toc-number">1.</span> <span class="toc-text">hexo简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建hexo博客"><span class="toc-number">2.</span> <span class="toc-text">搭建hexo博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地测试hexo"><span class="toc-number">2.2.</span> <span class="toc-text">本地测试hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到GitHub"><span class="toc-number">2.3.</span> <span class="toc-text">部署到GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建github_pages仓库"><span class="toc-number">2.3.1.</span> <span class="toc-text">创建github pages仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">2.3.2.</span> <span class="toc-text">部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换主题"><span class="toc-number">2.4.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#换域名"><span class="toc-number">2.5.</span> <span class="toc-text">换域名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享一个音乐"><span class="toc-number">3.</span> <span class="toc-text">分享一个音乐</span></a></li></ol>
+		</div>
+		
+		<h2 id="hexo简介">hexo简介</h2>
+<p>hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github和Heroku上。作者是来自台湾的少年。</p>
+<h2 id="搭建hexo博客">搭建hexo博客</h2>
+<p>由于本人是linux系统，所以以下操作都是在linux环境下的，Windows，Mac原理一样，操作略有区别。（Windows下推荐<a href="http://zipperary.com/2013/05/28/hexo-guide-1/" target="_blank" rel="external">Zippera’s blog</a>,写的很不错）。</p>
+<h3 id="安装hexo">安装hexo</h3>
+<p>安装方法<a href="http://hexo.io/docs/index.html" target="_blank" rel="external">官方文档</a>有详细说明。其中<a href="http://git-scm.com/download/linux" target="_blank" rel="external">git安装</a>不会有什么问题，但是安装Node.js时，作者推荐用nvm（Node Version Manager）来安装，问题就出在这儿…由于身在天朝的原因，下载安装时会出现问题，我是用VPN解决的。安装完git和Node.js后，就可以安装hexo了，也是一键安装(如果提示缺少npm就先安装npm)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+
+<h3 id="本地测试hexo">本地测试hexo</h3>
+<p>安装完成后，为便于管理，在根目录下创建名为hexo文件夹,执行init命令可让hexo自动为我们创建所博客所需要的所有文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init hexo</div><div class="line"><span class="variable">$ </span>cd hexo</div><div class="line"><span class="variable">$ </span>npm install</div></pre></td></tr></table></figure>
+
+<p>接着在hexo文件夹下执行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo genereate</div><div class="line"><span class="variable">$ </span>hexo server</div></pre></td></tr></table></figure>
+
+<p>然后可在浏览器中输入localhost:4000查看本地页面，不出意外的话，一开始看到的都是这样的（默认是landscape主题）<img src="http://img.blog.csdn.net/20140305204456109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcGxlYXNlY2FsbG1ld2h5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="默认主题"></p>
+<h3 id="部署到GitHub">部署到GitHub</h3>
+<h4 id="创建github_pages仓库">创建github pages仓库</h4>
+<p>参考GitHub Pages官方说明创建仓库,以我为例，用户名ckjoker，仓库名字ckjoker.github.io，创建完成后部署的任务就完全交给hexo了</p>
+<h4 id="部署">部署</h4>
+<p>在hexo文件夹下，用编辑器打开文件<em>_config.yml</em>,找到</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="class"><span class="keyword">type</span>:</span></div></pre></td></tr></table></figure>
+
+<p>修改为</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="class"><span class="keyword">type</span>: <span class="title">github</span></span></div><div class="line">  repo: https:<span class="comment">//github.com/CKJOKER/ckjoker.github.io.git</span></div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+
+<p>然后再执行生成部署命令(要在hexo文件下执行)：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo genereate</div><div class="line"><span class="variable">$ </span>hexo deploy</div></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong>如果你还修改了<em>_config.yml</em>文件中的其他属性，像titile，author之类的，一定要确保冒号后面的空格，格式很严格，必须是只有一个，半角，这是yml语法。不注意的话会产生HexoError。详情查看<a href="http://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo常见问题解决方案</a>。<br>这时浏览器输入github pages 地址就可以看到自己的博客了(文章第一篇默认为Hexo生成的HelloWorld)，第一次看到还真有点小激动…</p>
+<h3 id="更换主题">更换主题</h3>
+<p>默认的landscape个人感觉毫无个性-。-于是换了个主题，当前博客主题是<em>iceman</em>,GitHub上有很多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">hexo主题</a>,相应的安装方法也都有说明，换个主题so easy~</p>
+<h3 id="换域名">换域名</h3>
+<p>唔…想要博客看起来更个性一点，没有自己的域名怎么行，都说<a href="http://www.dot.tk/zh/index.html?lang=zh" target="_blank" rel="external">dot.tk</a>还不错，重点是除了特殊域名外都是免费～，反正目前还没想到什么个性的域名，找个免费的先用用也没什么坏处。<a href="http://firefire.tk/" target="_blank" rel="external">firefire.tk</a>就是你了…（小苹果洗脑～）</p>
+<h2 id="分享一个音乐">分享一个音乐</h2>
+<p>这几天看LPL看的兴起啊，为了测试hexo的音乐分享功能，分享一首LPL的BGM</p>
+<embed src="http://www.xiami.com/widget/6077321_1773410838/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent">
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2015/01/27/Linux下github-hexo搭建自己的博客/" data-title="Linux下github+hexo搭建自己的博客 | CKJOKER" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/01/25/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo简介"><span class="toc-number">1.</span> <span class="toc-text">hexo简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建hexo博客"><span class="toc-number">2.</span> <span class="toc-text">搭建hexo博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地测试hexo"><span class="toc-number">2.2.</span> <span class="toc-text">本地测试hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到GitHub"><span class="toc-number">2.3.</span> <span class="toc-text">部署到GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建github_pages仓库"><span class="toc-number">2.3.1.</span> <span class="toc-text">创建github pages仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#部署"><span class="toc-number">2.3.2.</span> <span class="toc-text">部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更换主题"><span class="toc-number">2.4.</span> <span class="toc-text">更换主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#换域名"><span class="toc-number">2.5.</span> <span class="toc-text">换域名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享一个音乐"><span class="toc-number">3.</span> <span class="toc-text">分享一个音乐</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2015 
+		
+		<a href="http://yoursite.com" target="_blank" title="CKJOKER">CKJOKER</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ckjoker"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
