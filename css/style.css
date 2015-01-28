@@ -393,30 +393,30 @@ body >header a {
 }
 #imglogo {
   float: left;
-  width: 4em;
+  width: 10em;
   height: 4em;
 }
 @media only screen and (min-width: 768px) {
   #imglogo {
-    width: 5em;
+    width: 11em;
   }
 }
 @media only screen and (min-width: 1024px) {
   #imglogo {
-    width: 5.5em;
+    width: 11.5em;
   }
 }
 #imglogo img {
-  width: 4em;
+  width: 10em;
 }
 @media only screen and (min-width: 768px) {
   #imglogo img {
-    width: 5em;
+    width: 11em;
   }
 }
 @media only screen and (min-width: 1024px) {
   #imglogo img {
-    width: 5.5em;
+    width: 11.5em;
   }
 }
 #textlogo {
@@ -876,7 +876,7 @@ article .article-content h3,
 article .article-content h4,
 article .article-content h5,
 article .article-content h6 {
-  color: #ae00ae;
+  color: #460046;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0.3em 0;
@@ -1397,7 +1397,7 @@ section.comment {
   overflow: hidden;
   line-height: 1.5em;
   font-size: 1em;
-  color: #ae00ae;
+  color: #460046;
   opacity: 0.6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: alpha(opacity=60);
