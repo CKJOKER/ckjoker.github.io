@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Java位操作总结 | CKJOKER</title>
+    <title>Java位运算小结 | CKJOKER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="CKJOKER">
@@ -70,7 +70,7 @@ Java位运算是针对于整型数据类型的二进制进行的移位操作，�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/01/Java位操作总结/" title="Java位操作总结" itemprop="url">Java位操作总结</a>
+      <a href="/2015/03/01/Java位操作总结/" title="Java位运算小结" itemprop="url">Java位运算小结</a>
   </h1>
   <p class="article-author">By
     
@@ -78,7 +78,7 @@ Java位运算是针对于整型数据类型的二进制进行的移位操作，�
     </p>
   <p class="article-time">
     <time datetime="2015-03-01T13:35:24.000Z" itemprop="datePublished">Mar 1 2015</time>
-    Updated:<time datetime="2015-03-02T14:49:50.000Z" itemprop="dateModified">Mar 2 2015</time>
+    Updated:<time datetime="2015-03-02T15:27:34.000Z" itemprop="dateModified">Mar 2 2015</time>
     
   </p>
 </header>
@@ -88,33 +88,29 @@ Java位运算是针对于整型数据类型的二进制进行的移位操作，�
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">2.</span> <span class="toc-text">位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#位与&"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">位与&</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位或|"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">位或|</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位非～"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">位非～</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位异或^"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">位异或^</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#有符号右移>>"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">有符号右移>></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#有符号左移<<"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">有符号左移<<</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#无符号右移>>>"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">无符号右移>>></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Note"><span class="toc-number">2.0.0.8.</span> <span class="toc-text">Note</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算应用"><span class="toc-number">3.</span> <span class="toc-text">位运算应用</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">2.</span> <span class="toc-text">位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#位与&"><span class="toc-number">2.1.</span> <span class="toc-text">位与&</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位或|"><span class="toc-number">2.2.</span> <span class="toc-text">位或|</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位非～"><span class="toc-number">2.3.</span> <span class="toc-text">位非～</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位异或^"><span class="toc-number">2.4.</span> <span class="toc-text">位异或^</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有符号右移>>"><span class="toc-number">2.5.</span> <span class="toc-text">有符号右移>></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有符号左移<<"><span class="toc-number">2.6.</span> <span class="toc-text">有符号左移<<</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#无符号右移>>>"><span class="toc-number">2.7.</span> <span class="toc-text">无符号右移>>></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note"><span class="toc-number">2.8.</span> <span class="toc-text">Note</span></a></li></ol></li></ol>
 		</div>
 		
 		<h3 id="基本概念">基本概念</h3>
 <p>Java位运算是针对于整型数据类型的二进制进行的移位操作，我们首先需要弄明白两个问题，Java有哪些数据类型是整型数据类型和各数字进制之间转换问题。Java整型数据类型有：byte、char、short、int、long。1个字节占8位，即1byte=8bit。<br>常见数据类型及其所占位数如下：<br><img src="http://7vzubp.com1.z0.glb.clouddn.com/bit.jpg" alt="位表格"><br>Java中只有有符号整数，没有无符号整数（unsigned int）,计算机在存储有符号整数时，是用该整数的补码进行存储的。只有有符号的整数才有原码，反码和补码（关于原码，反码，补码的详细介绍，参考这篇<a href="http://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html" target="_blank" rel="external">博文</a>）。需要强调的一点是：由于计算机存储的是补码，正数的原，反，补码都一样，而负数则需要进行一定转换。以8位二进制数为例，00000001～01111111表示1～127,而负数若存储成原码形式，则10000001-11111111表示-1～-127，算上00000000=0一共127+127+1=255位，少了一位，所以要当成补码来计算，则10000001～11111111表示-127～-1，特别的10000000表示-128,所以8位二进制范围就是[-128,127],一共256位。因此计算机在进行位运算时，实际上都是补码的运算。</p>
 <h3 id="位运算符">位运算符</h3>
 <p>以8bit为例，32bit同理</p>
-<h6 id="位与&amp;">位与&amp;</h6>
+<h4 id="位与&amp;">位与&amp;</h4>
 <p>4&amp;6<br>0000 0100<br>0000 0110<br>0000 0100<br>结果：4  </p>
-<h6 id="位或|">位或|</h6>
+<h4 id="位或|">位或|</h4>
 <p>-4|6<br>1111 1100<br>0000 0110<br>1111 1110（补码）<br>1000 0010（原码）<br>结果：-2</p>
-<h6 id="位非～">位非～</h6>
+<h4 id="位非～">位非～</h4>
 <p>～4<br>0000 0100<br>1111 1011（补码）<br>1000 0101（原码）<br>结果：-5</p>
-<h6 id="位异或^">位异或^</h6>
+<h4 id="位异或^">位异或^</h4>
 <p>4^6<br>0000 0100<br>0000 0110<br>0000 0010<br>结果：2</p>
-<h6 id="有符号右移&gt;&gt;">有符号右移&gt;&gt;</h6>
+<h4 id="有符号右移&gt;&gt;">有符号右移&gt;&gt;</h4>
 <p>正数,高位补0,负数,高位补1,实质等同于把这个数（十进制）除以2的n（位移位数）次幂<br>-4&gt;&gt;2<br>1111 1100<br>1111 1111<br>结果：-1</p>
-<h6 id="有符号左移&lt;&lt;">有符号左移&lt;&lt;</h6>
+<h4 id="有符号左移&lt;&lt;">有符号左移&lt;&lt;</h4>
 <p>无论正数负数低位均补0,实质等同于把这个数（十进制）乘2的n（位移位数）次幂<br>-4&lt;&lt;2<br>1111 1100<br>1111 0000<br>结果：-16</p>
-<h6 id="无符号右移&gt;&gt;&gt;">无符号右移&gt;&gt;&gt;</h6>
+<h4 id="无符号右移&gt;&gt;&gt;">无符号右移&gt;&gt;&gt;</h4>
 <p>无论正数负数高位均补0，所以&gt;&gt;&gt;结果一定是正数<br>-4&gt;&gt;&gt;2<br>1111 1100<br>0011 1111<br>结果：2^6-1=63  </p>
-<h6 id="Note">Note</h6>
+<h4 id="Note">Note</h4>
 <p>由于数据类型所占字节是有限的，而位移的大小却可以任意大小，所以可能存在位移后超过了该数据类型的表示范围，于是有了这样的规定：<br>如果为int数据类型，且位移位数大于32位，则首先把位移位数对32取模，不然位移超过总位数没意义的。所以4&gt;&gt;32与4&gt;&gt;0是等价的。<br>如果为long类型，且位移位数大于64位，则首先把位移位数对64取模，若没超过64位则不用对位数取模。<br>如果为byte、char、short，则会首先将他们扩充到32位，然后的规则就按照int类型来处理。</p>
-<h3 id="位运算应用">位运算应用</h3>
-<ul>
-<li>判断int型变量a的奇偶性</li>
-</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -129,7 +125,7 @@ Java位运算是针对于整型数据类型的二进制进行的移位操作，�
 
 <div class="article-share" id="share">
 
-  <div data-url="https://ckjoker.github.io/2015/03/01/Java位操作总结/" data-title="Java位操作总结 | CKJOKER" data-tsina="null" class="share clearfix">
+  <div data-url="https://ckjoker.github.io/2015/03/01/Java位操作总结/" data-title="Java位运算小结 | CKJOKER" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -159,7 +155,7 @@ Java位运算是针对于整型数据类型的二进制进行的移位操作，�
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">2.</span> <span class="toc-text">位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#位与&"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">位与&</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位或|"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">位或|</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位非～"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">位非～</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#位异或^"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">位异或^</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#有符号右移>>"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">有符号右移>></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#有符号左移<<"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">有符号左移<<</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#无符号右移>>>"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">无符号右移>>></span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Note"><span class="toc-number">2.0.0.8.</span> <span class="toc-text">Note</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算应用"><span class="toc-number">3.</span> <span class="toc-text">位运算应用</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算符"><span class="toc-number">2.</span> <span class="toc-text">位运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#位与&"><span class="toc-number">2.1.</span> <span class="toc-text">位与&</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位或|"><span class="toc-number">2.2.</span> <span class="toc-text">位或|</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位非～"><span class="toc-number">2.3.</span> <span class="toc-text">位非～</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位异或^"><span class="toc-number">2.4.</span> <span class="toc-text">位异或^</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有符号右移>>"><span class="toc-number">2.5.</span> <span class="toc-text">有符号右移>></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#有符号左移<<"><span class="toc-number">2.6.</span> <span class="toc-text">有符号左移<<</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#无符号右移>>>"><span class="toc-number">2.7.</span> <span class="toc-text">无符号右移>>></span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note"><span class="toc-number">2.8.</span> <span class="toc-text">Note</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
