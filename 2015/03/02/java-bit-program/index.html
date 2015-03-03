@@ -4,10 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>java-bit-program | CKJOKER</title>
+    <title>Java位运算应用 | CKJOKER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="CKJOKER">
+    
+    <meta name="description" content="用bit进行基本运算
+奇偶性，判断int型变量a的奇偶性
+ a&amp;amp;1=0 偶数 a&amp;amp;1=1 奇数
+平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值
+123public staitc int average(int x,int y){	return (x+y)&amp;gt;">
     
     
     
@@ -67,7 +73,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/02/java-bit-program/" title="java-bit-program" itemprop="url">java-bit-program</a>
+      <a href="/2015/03/02/java-bit-program/" title="Java位运算应用" itemprop="url">Java位运算应用</a>
   </h1>
   <p class="article-author">By
     
@@ -75,7 +81,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-03-02T15:33:51.000Z" itemprop="datePublished">Mar 2 2015</time>
-    Updated:<time datetime="2015-03-02T15:33:51.000Z" itemprop="dateModified">Mar 2 2015</time>
+    Updated:<time datetime="2015-03-03T08:38:01.000Z" itemprop="dateModified">Mar 3 2015</time>
     
   </p>
 </header>
@@ -85,19 +91,73 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用bit进行基本运算"><span class="toc-number">1.</span> <span class="toc-text">用bit进行基本运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#奇偶性，判断int型变量a的奇偶性"><span class="toc-number">1.1.</span> <span class="toc-text">奇偶性，判断int型变量a的奇偶性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值"><span class="toc-number">1.2.</span> <span class="toc-text">平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值"><span class="toc-number">1.3.</span> <span class="toc-text">交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2的幂，给定一个整数n，判断n是否是2的幂"><span class="toc-number">1.4.</span> <span class="toc-text">2的幂，给定一个整数n，判断n是否是2的幂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对值"><span class="toc-number">1.5.</span> <span class="toc-text">绝对值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见bit基本操作"><span class="toc-number">2.</span> <span class="toc-text">常见bit基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Get_Bit"><span class="toc-number">2.1.</span> <span class="toc-text">Get Bit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set_Bit"><span class="toc-number">2.2.</span> <span class="toc-text">Set Bit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Clear_Bit"><span class="toc-number">2.3.</span> <span class="toc-text">Clear Bit</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#清除第i位"><span class="toc-number">2.3.1.</span> <span class="toc-text">清除第i位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除从第i位到最高位（包括i）"><span class="toc-number">2.3.2.</span> <span class="toc-text">清除从第i位到最高位（包括i）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除从第0位到第i位"><span class="toc-number">2.3.3.</span> <span class="toc-text">清除从第0位到第i位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除第i位到第j位(i<=j)"><span class="toc-number">2.3.4.</span> <span class="toc-text">清除第i位到第j位(i<=j)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Update_Bit"><span class="toc-number">2.4.</span> <span class="toc-text">Update Bit</span></a></li></ol></li></ol>
 		</div>
 		
-		  
+		<h3 id="用bit进行基本运算">用bit进行基本运算</h3>
+<h4 id="奇偶性，判断int型变量a的奇偶性">奇偶性，判断int型变量a的奇偶性</h4>
+<p> a&amp;1=0 偶数<br> a&amp;1=1 奇数</p>
+<h4 id="平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值">平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> staitc <span class="keyword">int</span> <span class="title">average</span>(<span class="keyword">int</span> x,<span class="keyword">int</span> y){</div><div class="line">	<span class="keyword">return</span> (x+y)&gt;&gt;<span class="number">1</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>上面方法x+y的值可能直接超过int类型的最大范围，优化做法：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">average</span>(<span class="keyword">int</span> x,<span class="keyword">int</span> y){</div><div class="line">    <span class="keyword">return</span> ((x^y)&gt;&gt;<span class="number">1</span>)+(x&y);</div><div class="line">    <span class="comment">/*(x^y) &gt;&gt; 1得到x，y其中一个为1的位并除以2， </span></div><div class="line">    x&y得到x，y都为1的部分，加一起就是平均数了*/  	</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h4 id="交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值">交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span>(<span class="keyword">int</span> x,<span class="keyword">int</span> y){</div><div class="line">	x^=y;</div><div class="line">	y^=x;</div><div class="line">	x^=y;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h4 id="2的幂，给定一个整数n，判断n是否是2的幂">2的幂，给定一个整数n，判断n是否是2的幂</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOf2</span>(<span class="keyword">int</span> n){</div><div class="line">	<span class="keyword">return</span> ((n!=<span class="number">0</span>)&&(n&(n-<span class="number">1</span>)==<span class="number">0</span>));</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h4 id="绝对值">绝对值</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">abs</span>(<span class="keyword">int</span> x){</div><div class="line">	<span class="keyword">int</span> y=x&gt;&gt;<span class="number">31</span>;</div><div class="line">	<span class="keyword">return</span> (x^y)-y;</div><div class="line">	<span class="comment">/* x&gt;&gt;31 取得x的符号，若x为正数，x&gt;&gt;31等于0，若n为负数，x&gt;&gt;31等于-1 </span></div><div class="line">若x为正数 x^0=x,x不变，若x为负数有x^-1,结果x变号并且为x的绝对值减1，再减去-1就是绝对值 */ </div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="常见bit基本操作">常见bit基本操作</h3>
+<h4 id="Get_Bit">Get Bit</h4>
+<p>通过把1左移i位获得形如00010000形式的数然后与所给数num进行&amp;运算，这样就把num除了第i位的数字全都清除掉，然后判断它是否为0,若不为0则说明第i位是1,返回true,反之是0（false）  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">getBit</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i){</div><div class="line">	<span class="keyword">return</span> ((num&(<span class="number">1</span>&lt;&lt;i))!=<span class="number">0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+<h4 id="Set_Bit">Set Bit</h4>
+<p>通过把1左移i位获得形如00010000形式的数然后与所给数num进行|运算，这样既把第i位set为1,又保留了其它位的原始值</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">setBit</span>(<span class="keyword">int</span> num,i){</div><div class="line">	<span class="keyword">return</span> (num|(<span class="number">1</span>&lt;&lt;i));</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h4 id="Clear_Bit">Clear Bit</h4>
+<h5 id="清除第i位">清除第i位</h5>
+<p>方法与Set Bit相反，先获得00010000形式的数然后取反（~）得11101111形式然后与num进行&amp;运算，就能将第i位清除（实际是置0）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">clearBit</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i){</div><div class="line">	<span class="keyword">int</span> mask=~(<span class="number">1</span>&lt;&lt;i);</div><div class="line">	<span class="keyword">return</span> num&mask;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h5 id="清除从第i位到最高位（包括i）">清除从第i位到最高位（包括i）</h5>
+<p>先将1左移i位，此时第i位（i从0开始）是1，然后将该数-1得到00001111的形式（eg:i=4），然后与num&amp;运算</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">clearBit2</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i){</div><div class="line">	<span class="keyword">int</span> mask=(<span class="number">1</span>&lt;&lt;i)-<span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> num&mask;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h5 id="清除从第0位到第i位">清除从第0位到第i位</h5>
+<p>先得到一个所有位全1的数，然后左移i+1位，此时得到从第0位到第i位均为0的数，形如11110000（eg:i=3），然后与num&amp;运算</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">clearBit3</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i){</div><div class="line">	<span class="keyword">int</span> allOnes=~<span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> mask=allOnes&lt;&lt;i+<span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> num&mask;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h5 id="清除第i位到第j位(i&lt;=j)">清除第i位到第j位(i&lt;=j)</h5>
+<p>结合清除i~最高位和0～i位两个方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">clearBit4</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i,<span class="keyword">int</span> j){</div><div class="line">	<span class="keyword">int</span> allOnes=~<span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> left=allOnes&lt;&lt;(j+<span class="number">1</span>);</div><div class="line">	<span class="keyword">int</span> right=(<span class="number">1</span>&lt;&lt;i)-<span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> mask=left|right;</div><div class="line">	<span class="keyword">return</span> num&mask;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h4 id="Update_Bit">Update Bit</h4>
+<p>update是clear和set的结合，将num第i位修改为v：先clear第i位，然后set第i位，注意set之前先将v左移到第i位</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">updateBit</span>(<span class="keyword">int</span> num,<span class="keyword">int</span> i,<span class="keyword">int</span> v){</div><div class="line">	<span class="keyword">int</span> mask=~(<span class="number">1</span>&lt;&lt;i)</div><div class="line">	<span class="keyword">return</span> (num&mask)|(v&lt;&lt;i);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Bit-Manipulation/">Bit Manipulation</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="https://ckjoker.github.io/2015/03/02/java-bit-program/" data-title="java-bit-program | CKJOKER" data-tsina="null" class="share clearfix">
+  <div data-url="https://ckjoker.github.io/2015/03/02/java-bit-program/" data-title="Java位运算应用 | CKJOKER" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -127,7 +187,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用bit进行基本运算"><span class="toc-number">1.</span> <span class="toc-text">用bit进行基本运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#奇偶性，判断int型变量a的奇偶性"><span class="toc-number">1.1.</span> <span class="toc-text">奇偶性，判断int型变量a的奇偶性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值"><span class="toc-number">1.2.</span> <span class="toc-text">平均值，给定两个int型变量，要求用先求和后除以2的方法求二者平均值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值"><span class="toc-number">1.3.</span> <span class="toc-text">交换变量值，给定两个int型变量，不用额外的变量交换两个变量的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2的幂，给定一个整数n，判断n是否是2的幂"><span class="toc-number">1.4.</span> <span class="toc-text">2的幂，给定一个整数n，判断n是否是2的幂</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对值"><span class="toc-number">1.5.</span> <span class="toc-text">绝对值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见bit基本操作"><span class="toc-number">2.</span> <span class="toc-text">常见bit基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Get_Bit"><span class="toc-number">2.1.</span> <span class="toc-text">Get Bit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set_Bit"><span class="toc-number">2.2.</span> <span class="toc-text">Set Bit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Clear_Bit"><span class="toc-number">2.3.</span> <span class="toc-text">Clear Bit</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#清除第i位"><span class="toc-number">2.3.1.</span> <span class="toc-text">清除第i位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除从第i位到最高位（包括i）"><span class="toc-number">2.3.2.</span> <span class="toc-text">清除从第i位到最高位（包括i）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除从第0位到第i位"><span class="toc-number">2.3.3.</span> <span class="toc-text">清除从第0位到第i位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#清除第i位到第j位(i<=j)"><span class="toc-number">2.3.4.</span> <span class="toc-text">清除第i位到第j位(i<=j)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Update_Bit"><span class="toc-number">2.4.</span> <span class="toc-text">Update Bit</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -141,9 +201,9 @@
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/Bit-Manipulation/" title="Bit Manipulation">Bit Manipulation<sup>1</sup></a></li>
+			<li><a href="/tags/Bit-Manipulation/" title="Bit Manipulation">Bit Manipulation<sup>2</sup></a></li>
 		
-			<li><a href="/tags/Java/" title="Java">Java<sup>1</sup></a></li>
+			<li><a href="/tags/Java/" title="Java">Java<sup>2</sup></a></li>
 		
 			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 		
